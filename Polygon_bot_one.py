@@ -29,9 +29,9 @@ except:
 driver.find_element(By.XPATH, '//*[@id="memberTabs"]/ul[2]/li[1]/a').click()
 ######### ----Filtering Part------######
 # for k in range(1, 12):   
-driver.find_element(By.ID, "criteria.shapeCode9").click() # Change the Shape type###########################
+driver.find_element(By.ID, "criteria.shapeCode1").click() # Change the Shape type###########################
 carat_min = driver.find_element(By.ID, 'criteria.caratWeightMin')
-carat_min.send_keys('3.02')
+carat_min.send_keys('5')
 carat_max = driver.find_element(By.ID, 'criteria.caratWeightMax')
 carat_max.send_keys('5.99')
 colorset = driver.find_element(By.ID, "criteria.colorMin")
@@ -68,6 +68,9 @@ clrt = []
 cutg = []
 pricepc = []
 tot = []
+dep = []
+tbl = []
+fluo = []
 time.sleep(5)
 el = WebDriverWait(driver, 10).until(EC.visibility_of_all_elements_located(
     (By.XPATH, '//*[@id="results"]/table/thead/tr[1]/td[2]/ul/li')))
@@ -121,6 +124,18 @@ for i in range(0, total_iterator_count):
             Total = row.split(' ')[6]
             tot.append(Total)
             new_data["Total"] = Total
+
+            Depth = row.split(' ')[7]
+            dep.append(Depth)
+            new_data["Depth"] = Depth
+
+            Table = row.split(' ')[8]
+            tbl.append(Table)
+            new_data["Table"] = Table
+            
+            Fluorescence = row.split(' ')[9]
+            fluo.append(Fluorescence)
+            new_data["Fluorescence"] = Fluorescence
         else:
             pricepercarat = row.split(' ')[6]
             pricepc.append(pricepercarat)
@@ -130,10 +145,23 @@ for i in range(0, total_iterator_count):
             tot.append(Total)
             new_data["Total"] = Total
 
+            Depth = row.split(' ')[8]
+            dep.append(Depth)
+            new_data["Depth"] = Depth
+
+            Table = row.split(' ')[9]
+            tbl.append(Table)
+            new_data["Table"] = Table
+
+            Fluorescence = row.split(' ')[10]
+            fluo.append(Fluorescence)
+            new_data["Fluorescence"] = Fluorescence
+            
+
         diamond_list.append(new_data)
 
         dict = {'Shape': shp, 'Carat': crt, 'Color': clr, 'Clarity': clrt,
-                'CutGrade': cutg, 'pricepercarat': pricepc, 'Total': tot}
+                'CutGrade': cutg, 'pricepercarat': pricepc, 'Total': tot, 'Depth': dep, 'Table': tbl, 'Fluorescence': fluo}
 
         df = pd.DataFrame(dict)
 
