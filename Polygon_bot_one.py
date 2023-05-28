@@ -29,20 +29,20 @@ except:
 driver.find_element(By.XPATH, '//*[@id="memberTabs"]/ul[2]/li[1]/a').click()
 ######### ----Filtering Part------######
 # for k in range(1, 12):   
-driver.find_element(By.ID, "criteria.shapeCode1").click() # Change the Shape type###########################
+driver.find_element(By.ID, "criteria.shapeCode5").click() # Change the Shape type###########################
 carat_min = driver.find_element(By.ID, 'criteria.caratWeightMin')
-carat_min.send_keys('5')
+carat_min.send_keys('0.18')
 carat_max = driver.find_element(By.ID, 'criteria.caratWeightMax')
 carat_max.send_keys('5.99')
 colorset = driver.find_element(By.ID, "criteria.colorMin")
 driver.execute_script(
-    "arguments[0].setAttribute('value','180_J')", colorset)
+    "arguments[0].setAttribute('value','150_M')", colorset)
 claritysetmax = driver.find_element(By.ID, "criteria.clarityMax")
 driver.execute_script(
     "arguments[0].setAttribute('value','120_IFLC')", claritysetmax)
 claritysetmin = driver.find_element(By.ID, "criteria.clarityMin")
 driver.execute_script(
-    "arguments[0].setAttribute('value','060_SI2')", claritysetmin)
+    "arguments[0].setAttribute('value','020_I3')", claritysetmin)
 gradesetmax = driver.find_element(By.ID, "criteria.cutGradeMax")
 driver.execute_script(
     "arguments[0].setAttribute('value','040_VG')", gradesetmax)
@@ -50,6 +50,9 @@ gradesetmin = driver.find_element(By.ID, "criteria.cutGradeMin")
 driver.execute_script(
     "arguments[0].setAttribute('value','040_VG')", gradesetmin)
 driver.find_element(By.XPATH, '//*[@id="criteria.lab1"]').click()
+driver.execute_script("window.scrollTo(0, 700)") 
+driver.find_element(By.XPATH, '//*[@id="criteria.fluorescenceIntensity1"]').click()
+driver.find_element(By.XPATH, '//*[@id="criteria.fluorescenceIntensity4"]').click()
 driver.find_element(
     By.XPATH, '//*[@id="memberBodyLeft"]/p[1]/a[2]').click()
 WebDriverWait(driver, 10).until(EC.visibility_of_element_located(
