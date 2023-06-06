@@ -29,7 +29,7 @@ except:
 driver.find_element(By.XPATH, '//*[@id="memberTabs"]/ul[2]/li[1]/a').click()
 ######### ----Filtering Part------######
 # for k in range(1, 12):   
-driver.find_element(By.ID, "criteria.shapeCode5").click() # Change the Shape type###########################
+driver.find_element(By.ID, "criteria.shapeCode11").click() # Change the Shape type###########################
 carat_min = driver.find_element(By.ID, 'criteria.caratWeightMin')
 carat_min.send_keys('0.18')
 carat_max = driver.find_element(By.ID, 'criteria.caratWeightMax')
